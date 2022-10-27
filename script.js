@@ -8,15 +8,17 @@ function getPlayerChoice() {
   playerSelection = prompt("Choose your weapon!");
   return playerSelection.toUpperCase();
 }
-getPlayerChoice();
+// getPlayerChoice();
 
 function getComputerChoice() {
   computerSelection = hands[Math.floor(Math.random() * hands.length)];
   return computerSelection.toUpperCase();
 }
-getComputerChoice();
+// getComputerChoice();
 
 function playRound() {
+  getPlayerChoice();
+  getComputerChoice();
   switch (playerSelection) {
     case "rock":
       if (playerSelection === computerSelection)
@@ -67,4 +69,6 @@ function playRound() {
       break;
   }
 }
-playRound();
+for (let i = 0; i < 5; i++) {
+  playRound();
+}
