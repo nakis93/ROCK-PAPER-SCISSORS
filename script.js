@@ -6,25 +6,24 @@ let playerSelection;
 let playerScore = 0;
 let computerScore = 0;
 const [a, b, c] = hands;
+
+//A functions that when it's called it asks for the user's input
 function getPlayerChoice() {
   playerSelection = prompt("Choose your weapon!").toUpperCase();
 }
 
+// Computer's random selection between the array's elements
 function getComputerChoice() {
   computerSelection =
     hands[Math.floor(Math.random() * hands.length)].toUpperCase();
 }
 
+//A function for a single-round game between user and computer
 function playRound() {
   getPlayerChoice();
   getComputerChoice();
-  // console.log(computerSelection);
-  // console.log(playerSelection);
-  // console.log(playerSelection.toUpperCase());
-  // console.log(a);
-  // console.log(a.toUpperCase());
-  // console.log(playerSelection);
-  // console.log(a);
+
+  // Accept only valid inputs
   if (
     playerSelection !== a.toUpperCase() &&
     playerSelection !== b.toUpperCase() &&
@@ -32,6 +31,7 @@ function playRound() {
   ) {
     alert("Invalid input! Please choose between rock, paper, scissors! ");
   }
+
   switch (playerSelection) {
     case "ROCK":
       if (playerSelection === computerSelection)
@@ -49,7 +49,6 @@ function playRound() {
           `You got ${playerSelection} and the computer got ${computerSelection}. You WIN! The score is ${playerScore}vs${computerScore}`
         );
       }
-
       break;
 
     case "PAPER":
@@ -68,7 +67,6 @@ function playRound() {
           `You got ${playerSelection} and the computer got ${computerSelection}. You WIN! The score is ${playerScore}vs${computerScore}`
         );
       }
-
       break;
 
     case "SCISSORS":
@@ -87,7 +85,6 @@ function playRound() {
           `You got ${playerSelection} and the computer got ${computerSelection}. You WIN! The score is ${playerScore}vs${computerScore}`
         );
       }
-
       break;
   }
 }
@@ -97,6 +94,8 @@ function game() {
   }
 }
 game();
+
+// Announce the winner
 if (playerScore > computerScore) console.log("CONGRATULATIONS! YOU WON!");
 else if (playerScore === computerScore) console.log("IT'S A TIE!");
 else console.log("YOU LOST! THE COMPUTER WON!");
