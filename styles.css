@@ -1,0 +1,28 @@
+h1 {
+  font-family: "Roboto", sans-serif;
+  color: brown;
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h3,
+#container,
+#reset {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+}
+
+#scores,
+#winner {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+}
