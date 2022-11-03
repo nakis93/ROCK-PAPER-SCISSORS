@@ -7,11 +7,44 @@ let playerScore = 0;
 let computerScore = 0;
 const [a, b, c] = hands;
 
-//A functions that when it's called it asks for the user's input
-function getPlayerChoice() {
-  playerSelection = prompt("Choose your weapon!").toUpperCase();
+const btn1 = document.querySelector("#btn1");
+const btn2 = document.querySelector("#btn2");
+const btn3 = document.querySelector("#btn3");
+const btn4 = document.querySelector("#new-game");
+
+function button1() {
+  playerSelection = a.toUpperCase();
+  playRound();
+  scores.textContent = `${playerScore} vs ${computerScore}`;
+  announceWinner();
 }
 
+function button2() {
+  playerSelection = b.toUpperCase();
+  playRound();
+  scores.textContent = `${playerScore} vs ${computerScore}`;
+  announceWinner();
+}
+
+function button3() {
+  playerSelection = c.toUpperCase();
+  playRound();
+  scores.textContent = `${playerScore} vs ${computerScore}`;
+  announceWinner();
+}
+
+function playGame() {
+  btn1.addEventListener("click", button1);
+
+  btn2.addEventListener("click", button2);
+
+  btn3.addEventListener("click", button3);
+
+  btn4.addEventListener("click", () => {
+    newGame();
+  });
+}
+playGame();
 // Computer's random selection between the array's elements
 function getComputerChoice() {
   computerSelection =
@@ -20,82 +53,62 @@ function getComputerChoice() {
 
 //A function for a single-round game between user and computer
 function playRound() {
-  getPlayerChoice();
   getComputerChoice();
-
-  // Accept only valid inputs
-  if (
-    playerSelection !== a.toUpperCase() &&
-    playerSelection !== b.toUpperCase() &&
-    playerSelection !== c.toUpperCase()
-  ) {
-    alert("Invalid input! Please choose between rock, paper, scissors! ");
-  }
 
   switch (playerSelection) {
     case "ROCK":
-      if (playerSelection === computerSelection)
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection} too. It's a tie! The score is ${playerScore}vs${computerScore}`
-        );
+      if (playerSelection === computerSelection) console.log("");
       else if (computerSelection === "PAPER") {
         computerScore = computerScore + 1;
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection}. You lose! The score is ${playerScore}vs${computerScore}`
-        );
       } else if (computerSelection === "SCISSORS") {
         playerScore = playerScore + 1;
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection}. You WIN! The score is ${playerScore}vs${computerScore}`
-        );
       }
       break;
 
     case "PAPER":
-      if (playerSelection === computerSelection)
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection} too. It's a tie! The score is ${playerScore}vs${computerScore}`
-        );
+      if (playerSelection === computerSelection) console.log("");
       else if (computerSelection === "SCISSORS") {
         computerScore = computerScore + 1;
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection}. You lose! The score is ${playerScore}vs${computerScore}`
-        );
       } else if (computerSelection === "ROCK") {
         playerScore = playerScore + 1;
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection}. You WIN! The score is ${playerScore}vs${computerScore}`
-        );
       }
       break;
 
     case "SCISSORS":
-      if (playerSelection === computerSelection)
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection} too. It's a tie! The score is ${playerScore}vs${computerScore}`
-        );
+      if (playerSelection === computerSelection) console.log("");
       else if (computerSelection === "ROCK") {
         computerScore = computerScore + 1;
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection}. You lose! The score is ${playerScore}vs${computerScore}`
-        );
+        // );
       } else if (computerSelection === "PAPER") {
         playerScore = playerScore + 1;
-        console.log(
-          `You got ${playerSelection} and the computer got ${computerSelection}. You WIN! The score is ${playerScore}vs${computerScore}`
-        );
       }
       break;
   }
 }
-function game() {
-  for (let i = 0; i < 5; i++) {
-    playRound();
-  }
-}
-game();
 
 // Announce the winner
-if (playerScore > computerScore) console.log("CONGRATULATIONS! YOU WON!");
-else if (playerScore === computerScore) console.log("IT'S A TIE!");
-else console.log("YOU LOST! THE COMPUTER WON!");
+function announceWinner() {
+  if (playerScore === 5) {
+    winner.textContent =
+      "HURRAY! Your Rock-Paper-Scissors skills are out of this planet!";
+    endGame();
+  } else if (computerScore === 5) {
+    winner.textContent =
+      "Oh no, it seems like a bunch of 0s and 1s humbled you..";
+    endGame();
+  }
+}
+// Deactivate the R-P-S buttons once the winner is announced
+function endGame() {
+  btn1.removeEventListener("click", button1);
+  btn2.removeEventListener("click", button2);
+  btn3.removeEventListener("click", button3);
+}
+
+function newGame() {
+  playerScore = 0;
+  computerScore = 0;
+  winner.textContent = "";
+  scores.textContent = "";
+  playGame();
+}
