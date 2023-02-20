@@ -7,9 +7,9 @@ let playerScore = 0;
 let computerScore = 0;
 const [a, b, c] = hands;
 
-const btn1 = document.querySelector("#btn1");
-const btn2 = document.querySelector("#btn2");
-const btn3 = document.querySelector("#btn3");
+const btn1 = document.querySelector("#btnRock");
+const btn2 = document.querySelector("#btnPaper");
+const btn3 = document.querySelector("#btnScissors");
 const btn4 = document.querySelector("#new-game");
 
 function button1() {
@@ -45,10 +45,13 @@ function playGame() {
   });
 }
 playGame();
+
+
 // Computer's random selection between the array's elements
 function getComputerChoice() {
   computerSelection =
     hands[Math.floor(Math.random() * hands.length)].toUpperCase();
+    selection.textContent = `Evil Computer chose ${computerSelection}!`
 }
 
 //A function for a single-round game between user and computer
@@ -57,7 +60,7 @@ function playRound() {
 
   switch (playerSelection) {
     case "ROCK":
-      if (playerSelection === computerSelection) console.log("");
+      if (playerSelection === computerSelection);
       else if (computerSelection === "PAPER") {
         computerScore = computerScore + 1;
       } else if (computerSelection === "SCISSORS") {
@@ -66,7 +69,7 @@ function playRound() {
       break;
 
     case "PAPER":
-      if (playerSelection === computerSelection) console.log("");
+      if (playerSelection === computerSelection);
       else if (computerSelection === "SCISSORS") {
         computerScore = computerScore + 1;
       } else if (computerSelection === "ROCK") {
@@ -75,7 +78,7 @@ function playRound() {
       break;
 
     case "SCISSORS":
-      if (playerSelection === computerSelection) console.log("");
+      if (playerSelection === computerSelection);
       else if (computerSelection === "ROCK") {
         computerScore = computerScore + 1;
         // );
@@ -94,7 +97,7 @@ function announceWinner() {
     endGame();
   } else if (computerScore === 5) {
     winner.textContent =
-      "Oh no, it seems like a bunch of 0s and 1s humbled you..";
+      "Oh no, it seems like a bunch of zeros and ones humbled you..";
     endGame();
   }
 }

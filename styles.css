@@ -21,7 +21,8 @@ h3,
 }
 
 #scores,
-#winner {
+#winner,
+#selection {
   color: aliceblue;
   display: flex;
   justify-content: center;
