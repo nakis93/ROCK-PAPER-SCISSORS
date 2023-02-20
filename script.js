@@ -46,12 +46,11 @@ function playGame() {
 }
 playGame();
 
-
 // Computer's random selection between the array's elements
 function getComputerChoice() {
   computerSelection =
     hands[Math.floor(Math.random() * hands.length)].toUpperCase();
-    selection.textContent = `Evil Computer chose ${computerSelection}!`
+  selection.textContent = `Evil Computer chose ${computerSelection}!`;
 }
 
 //A function for a single-round game between user and computer
